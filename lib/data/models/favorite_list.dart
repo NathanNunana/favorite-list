@@ -1,10 +1,12 @@
 class FavoriteList {
   final String? name;
-  FavoriteList({this.name});
-  factory FavoriteList.fromJson(Map<String, String> json){
+  final String? avatar;
+  FavoriteList({this.name, this.avatar});
+  factory FavoriteList.fromJson(Map<String, dynamic> json){
     return (
       FavoriteList(
-        name: json["name"]
+        name: json["name"],
+        avatar: json["avatar"]
       )
     );
   }

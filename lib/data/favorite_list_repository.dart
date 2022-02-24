@@ -10,7 +10,6 @@ class FavoriteListRepository {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as List;
       final list = json.map((element)=>FavoriteList.fromJson(element)).toList();
-      print("here: $list");
       return list;
     } else {
       throw Exception('Failed to fetch products');

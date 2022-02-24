@@ -11,10 +11,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Favorite List"),
       ),
-      body: SafeArea(
-          child: BlocBuilder<FavoriteListCubit, List<FavoriteList>>(
-             builder: (context, items) {
-        if(items.isEmpty){
+      body: SafeArea(child: BlocBuilder<FavoriteListCubit, List<FavoriteList>>(
+          builder: (context, items) {
+        if (items.isEmpty) {
           return buildLoadingPage();
         }
         return buildLoadedListItems(items);
@@ -32,6 +31,9 @@ class HomePage extends StatelessWidget {
     return ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) => ListTile(
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(items[index].avatar),
+          ),
               title: Text(items[index].name),
             ));
   }
