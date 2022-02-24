@@ -1,4 +1,6 @@
+import 'package:favoritelist/cubit/favorite_list_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // local imports 
 import './screens/home.dart';
@@ -14,9 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        "/":(_) => const HomePage()
-      },
+      home: BlocProvider<FavoriteListCubit>(
+        create: (_)=> FavoriteListCubit()..fetchList(),
+        child: const HomePage(),
+      ),
     );
   }
 }
